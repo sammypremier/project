@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class="header-gradient">
+		<div>
+			<h1>
+				PELO<spa>X</span>
+			</h1>
+		</div>
+	</div>
+	<div>
+		<form class="form-format" method="POST">	
+			{{ form.hidden_tag() }}
+			<fieldset class="register-field-style">
+				<legend class="legend-style">Welcome,</legend>
+				<hr>
+				<p>
+					We are delighted to have you and also proud to tell you that
+					anybody can become our model. So, if you are not already our model,
+					do not worry, we have something for you.
+
+					let us take a quick view at becoming our mode. Yeaaaah, it is 
+					pretty much easy than you might have thought, all you have to do is 
+					buy from us and grow your account to the best.
+
+					Even as a new customer, all you have to do is to buy from pelox, take a neatly 
+					shot picture(s) with it, upload it and thats all. With this, you stand a chance to make it to the  
+					front page of PELOX WebApp. Amazing.
+				</p>
+				<small class="terms-and-condition"> see the <a href="#">terms and conditions</a> in details</small>
+			</fieldset>
+			<div>
+				{{ form.name.label(class="form") }}
+				{% if form.name.error %}
+					{{ form.name(class="form-field") }}
+					{% for error in form.name.error %}
+						{{error}}
+					{% endfor %}
+				{% else %}
+					{{ form.name(class="form-field") }}
+				{% endif %}
+			</div>
+			<div>
+				{{ form.email.label(class="form") }}
+				{% if form.email.error %}
+					{{ form.email(class="form-field") }}
+					{% for error in form.Email.error %}
+						{{error}}
+					{% endfor %}
+				{% else %}
+					{{ form.email(class="form-field") }}
+				{% endif %}
+			</div>
+			<div>
+				{{ form.password.label(class="form") }}
+				{% if form.password.error %}
+					{{ form.password(class="form-field") }}
+					{% for error in form.Password.error %}
+						{{error}}
+					{% endfor %}
+				{% else %}
+					{{ form.password(class="form-field") }}
+				{% endif %}
+			</div>
+			<div>
+			{{ form.confirm_password.label(class="form") }}
+			{% if form.confirm_password.error %}
+				{{ form.confirm_password(class="form-field") }}
+				{% for error in form.confirm_password.error %}
+					<span>{{error}}</span>
+				{% endfor %}
+			{% else %}
+				{{ form.confirm_password(class="form-field") }}
+			{% endif %}
+			</div>
+			<div>
+				{{ form.submit( class="register-btn" ) }}
+			</div>
+
+			<small>
+				already a model? <a href="{{ url_for('login') }}">login here</a> 
+			</small>
+		</form>
+	</div>
+
+{% endblock content %}

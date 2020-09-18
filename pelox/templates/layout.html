@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+		{% if title %}
+		<title> {{title}} </title>
+		{% else %}
+		<title>pelox-shop</title>
+		{% endif %}
+	<head>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename ='main.css')}}">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<title> landing page</title>
+	</head>
+
+	<body>
+
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<div>
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	{% block content %}{%  endblock content %}
+</body>
+</html>
