@@ -2,6 +2,8 @@ from flask import render_template, url_for, flash, redirect
 from pelox.forms import RegistrationForm, LoginForm
 from pelox import app, bcrypt, db
 
+from .models import Ordinaryuser
+
 @app.route("/")
 @app.route("/landingpage/")
 def landingpage ():
@@ -18,7 +20,7 @@ def register ():
 
 	if form.validate_on_submit():
 		hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-		user = Ordinaryuser( name=form.name.data, email= form.email.data, password= hashed_password)
+		user = Ordinaryuser( username=form.name.data, email= form.email.data, password= hashed_password)
 		db.session.add(user)
 		db.session.commit()
 		flash(f'registration successful, you are now able to log in')
